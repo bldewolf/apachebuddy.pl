@@ -642,13 +642,13 @@ sub generate_standard_report {
 			print "\tMax potential memory usage: \t\t";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage." MB" ;
-			print color 'reset';
+			print color 'reset'if ! $main::NOCOLOR;
 			print "\n\n";
 
 			print "\tPercentage of RAM allocated to Apache\t";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage_pct." %" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\n\n";
 		}
 		else {
@@ -658,17 +658,17 @@ sub generate_standard_report {
 			print "\tYour MaxClients setting is too high. It should be no greater than ";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_rec_maxclients.".\n";
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\tMax potential memory usage: ";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage." MB" ."($max_potential_usage_pct % of available RAM)" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\n\n";
 
 			print "\tPercentage of RAM allocated to Apache\t\t";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage_pct." %" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\n\n";
 		}
 	}
@@ -686,13 +686,13 @@ sub generate_standard_report {
 			print "\t(Max potential memory usage: ";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage." MB" ."($max_potential_usage_pct % of available RAM)" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print ")\n\n";
 			
 			print "\tPercentage of RAM allocated to Apache\t\t";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage_pct." %" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\n\n";
 
 		}
@@ -703,17 +703,17 @@ sub generate_standard_report {
 			print "\tYour MaxClients setting is too high. It should be no greater than ";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_rec_maxclients.".\n";
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\tMax potential memory usage: ";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage." MB" ."($max_potential_usage_pct % of available RAM)" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print ")\n\n";
 
 			print "\tPercentage of RAM allocated to Apache\t\t";
 			print color 'bold white' if ! $main::NOCOLOR;
 			print $max_potential_usage_pct." %" ;
-			print color 'reset';
+			print color 'reset' if ! $main::NOCOLOR;
 			print "\n\n";
 		}
 	}
@@ -763,9 +763,9 @@ sub generate_php_report {
 		print color 'reset' if ! $main::NOCOLOR;
 		print "\tYour MaxClients setting is within an acceptable range.\n";
 		print "\t(max potential memory usage by PHP under Apache: ";
-		print color 'bold white';
+		print color 'bold white' if ! $main::NOCOLOR;
 		print $max_potential_usage."MB";
-		print color 'reset';
+		print color 'reset' if ! $main::NOCOLOR;
 		print ")\n\n";
 	}
 	else {
@@ -775,11 +775,11 @@ sub generate_php_report {
 		print "\tYour MaxClients setting is too high. It should be no greater\n\tthan ";
 		print color 'bold white' if ! $main::NOCOLOR;
 		print $max_rec_maxclients.".\n";
-		print color 'reset';
+		print color 'reset' if ! $main::NOCOLOR;
 		print "\t(max potential memory usage by PHP under Apache: ";
-		print color 'bold white';
+		print color 'bold white' if ! $main::NOCOLOR;
 		print $max_potential_usage."MB";
-		print color 'reset';
+		print color 'reset' if ! $main::NOCOLOR;
 		print ")\n\n";
 	}
 }
@@ -812,6 +812,7 @@ sub usage {
 	print "If no options are specified, the basic tests will be run.\n";
 	print "\n";
 	print "\t-h, --help\tPrint this help message\n";
+	print "\t-n, --nocolor\tDisables color output\n";
 	print "\t-p, --port=PORT\tSpecify an alternate port to check (default: 80)\n";
 	print "\t-P, --php\tInclude the PHP memory_limit setting when making the recommendation\n";
 	print "\t-v, --verbose\tUse verbose output (this is very noisy, only useful for debugging)\n";
